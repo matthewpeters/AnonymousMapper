@@ -633,7 +633,7 @@ function initListeners() {
                         //do nothing
                     } else {
                         //is markerActive
-                        if (locations[i][1]) {
+                        if (locations[i][1]==1) {
                             markersOnMap[i].setMap(null);
                         }
                     }
@@ -645,7 +645,7 @@ function initListeners() {
                         //do nothing
                     } else {
                         //is markerActive
-                        if (locations[i][1]) {
+                        if (locations[i][1]==1) {
                             markersOnMap[i].setMap(map);
                         }
                     }
