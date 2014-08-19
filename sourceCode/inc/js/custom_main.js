@@ -473,7 +473,7 @@ function writeHTML(type, param1, param2, param3, param4) {
             if (param4) {
                 stringBuilder += "<div id=\"annotation_attribution" + param1 + "\" class=\"annotation_attribution_readOnly\">";
                 stringBuilder += "<div class=\"annotation_attribution_heading\">Attribution:</div>";
-                param4 = param4.replace(/\[/g, "<a href=\"http://").replace(/\]/g, "\" target=\"_blank\"> Link </a>"); //convert to decompiled
+                param4 = param4.replace("http://","").replace(/\[/g, "<a href=\"http://").replace(/\]/g, "\" target=\"_blank\"> Link </a>"); //convert to decompiled
                 stringBuilder += param4;
                 stringBuilder += "</div>";
             }
@@ -519,6 +519,10 @@ function toServer(dataPackage) {
             data: jQuery(this).serialize(),
             success: function () {
                 displayMessage(3,"saved");
+            },
+            error: function () { //not sure if this will ever run (or at least run when expected)
+                displayMessage(3, "error");
+                alert("There was an error, check your submission or contact support.");
             }
         });
     });
@@ -537,7 +541,7 @@ function createActionItem(handle, pointIndex) {
     }
     var dataPackage = data + "~";
     //one last check (filter all special/reserved characters)
-    dataPackage = dataPackage.replace(/[\n\r]/g, '&para;').replace(/<br\/>/g, "&para;").replace(/[\<\>\=]/g, '&para;');
+    dataPackage = dataPackage.replace(/[\n\r]/g, '&para;').replace(/<br\/>/g, "&para;").replace(/[\<\>\=]/g, '&para;').replace(/'/g, '&apos;');
     //alert("saving item: " + dataPackage); //temp
     console.log(dataPackage);
     toServer(dataPackage);
@@ -633,7 +637,7 @@ function initListeners() {
                         //do nothing
                     } else {
                         //is markerActive
-                        if (locations[i][1]==1) {
+                        if (locations[i][1]) {
                             markersOnMap[i].setMap(null);
                         }
                     }
@@ -645,7 +649,7 @@ function initListeners() {
                         //do nothing
                     } else {
                         //is markerActive
-                        if (locations[i][1]==1) {
+                        if (locations[i][1]) {
                             markersOnMap[i].setMap(map);
                         }
                     }
