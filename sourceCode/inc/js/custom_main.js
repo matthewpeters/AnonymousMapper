@@ -633,7 +633,7 @@ function initListeners() {
         document.getElementById("toggleAnn").onclick = function () {
             if (annOpen) {
                 for (i = 0; i < markersOnMap.length; i++) {
-                    if (markersOnMap[i] == null) {
+                    if (markersOnMap[i] == 1) {
                         //do nothing
                     } else {
                         //is markerActive
@@ -645,7 +645,7 @@ function initListeners() {
                 annOpen = false;
             } else {
                 for (i = 0; i < markersOnMap.length; i++) {
-                    if (markersOnMap[i] == null) {
+                    if (markersOnMap[i] == 1) {
                         //do nothing
                     } else {
                         //is markerActive
