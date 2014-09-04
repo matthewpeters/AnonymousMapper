@@ -37,6 +37,6 @@ You will need a SQL or MYSQL database and a microsoft server (azure offers free 
 Feel free to email me (matthew.peters@ufl.edu) if you have any problems or need some help installing the project.
 
 
-HELPFULL LINKS
+HELPFUL LINKS
 
 http://stackoverflow.com/questions/15772479/authentication-with-old-password-no-longer-supported-use-4-1-style-passwords
